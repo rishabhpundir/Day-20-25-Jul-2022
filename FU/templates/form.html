@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Form Page{% endblock title %}
+{% block body %}
+
+<div class="container">
+  <h1 class="text-center my-5">DJANGO FORM</h1>
+
+  {% if submitted %}
+
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Yay!</strong> Form submitted successfully.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  {% else %}
+
+  <div class="form-group">
+    <form action='' enctype="multipart/form-data" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  {% endif %}
+
+</div>
+{% endblock body %}
